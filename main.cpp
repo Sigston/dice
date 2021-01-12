@@ -9,15 +9,14 @@
 */
 #include <iostream>
 #include <string>
-
-void help();
+#include "config.h"
 
 int main(int argc, char* argv[])
 {
 	// If dice is called with no args, call help.
-	if(argc < 1)
-		help();
-	if(argc == 1)
+	if(argc <= 1)
+		Config::help();
+	if(argc == 2)
 	{
 		// Roll simple dice as XdX+/-X
 	}
@@ -28,10 +27,3 @@ int main(int argc, char* argv[])
 	return 0;
 }
 
-// Runs the help dialogue.
-void help()
-{
-	std::cout << "Usage: dice COMMAND [DICE] [OPTION]..." << std::endl;
-	std::cout << "A full-featured dice rolling program." << std::endl;
-	std::cout << "";
-}
