@@ -9,20 +9,55 @@
 */
 #include <iostream>
 #include <string>
+#include <vector>
 #include "config.h"
+#include "die.h"
 
 int main(int argc, char* argv[])
 {
 	// If dice is called with no args, call help.
 	if(argc <= 1)
 		Config::help();
-	if(argc == 2)
-	{
-		// Roll simple dice as XdX+/-X
-	}
 	else
 	{
-		// Attempt to process with options
+		std::vector<std::string> arguments(argv + 1, argv + argc);
+		Die die;
+		if(arguments[0] == "-R" || arguments[0] == "--roll")
+		{
+			if(die.loadFromArgs(arguments))
+				std::cout << die.roll();
+			else
+				Config::error("Not valid die roll. Use -h for help.");
+		}
+		if(arguments[0] == "-S" || arguments[0] == "--save")
+		{
+			if(die.loadFromArgs(arguments))
+				Config::save(die.unload());
+			else
+				Config::error("Not valid die roll. Use -h for help.");
+		}
+		if(arguments[0] == "-L" || arguments[0] == "--load")
+		{
+			if(arguments.size() < 1)
+				Config::error("Specify name of saved dice. Use -h for help.");
+			else
+			{
+				if(Config::findDice(arguments[1]))
+				{
+					die.loadFromArgs(Config::load(arguments[1]));
+					std::cout << die.roll();
+				}
+				else
+					Config::error("No dice found of that name. Use -h for help.");
+			}
+		}	
+		if(arguments[0] == "-F" || arguments[0] == "--flush")
+		{
+			Config::flush();
+			std::cout << "Saved dice deleted." << std::endl;
+		}
+		else		
+			Config::help();
 	}
 	return 0;
 }

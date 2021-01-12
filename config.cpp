@@ -10,6 +10,7 @@ void Config::help()
 	std::cout << "  -S, --save   Save a die." << std::endl;
 	std::cout << "  -L, --load   Load a die." << std::endl;
 	std::cout << "  -F, --flush  Flush saved dice." << std::endl;
+	std::cout << "  -h, --help   Run this dialogue." << std::endl;
 	std::cout << "\n DICE FORMAT" << std::endl;
 	std::cout << "  [X]dY[[+][-]Z], where X is the number of dice, Y the number of sides, and " << std::endl;
 	std::cout << "    Z an optional raw amount to add to the role." << std::endl;
