@@ -1,3 +1,4 @@
+#include <iostream>
 #include "config.h"
 
 // Runs the help dialogue.
@@ -27,3 +28,31 @@ void Config::help()
 	std::cout << "                    plus twelve rolls of a six sided dice with an additional roll on each 12 and 11 rolled." << std::endl;
 	std::cout << "\nSee github.com/Sigston/dice for more." << std::endl;
 }
+
+// Print the error string in a nice way.
+void Config::error(std::string str)
+{
+}
+
+// Save the arguments string as a dice: please check when saving that the string is valid.
+void Config::save(std::vector<std::string> args)
+{
+}
+
+// Will take a string associated with a die and return the arg list. Will return empty if cannot find.
+std::vector<std::string> Config::load(std::string str)
+{
+	return std::vector<std::string>();
+}
+
+// Looks for a die with the string, false if not found
+bool Config::findDice(std::string str)
+{
+	return true;
+}
+
+// Deletes all saved dice.
+void Config::flush()
+{
+}
+	

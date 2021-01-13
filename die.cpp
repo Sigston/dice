@@ -1,11 +1,6 @@
 #include "die.h"
 
-bool Die::loadFromArgs(std::vector<std::string> args)
+Die::Die(int sides) :
+	mSides{ 1, sides }
 {
-	return true;
-}
-
-int Die::roll()
-{
-	return 0;
 }
